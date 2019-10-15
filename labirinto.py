@@ -15,7 +15,7 @@ def generate_walls(x, y):
                 block = turtle.Turtle("square")
                 block.speed(0)
                 block.color("white")
-                block.shapesize(0.5, 0.5)
+                block.shapesize(0.8, 0.8)
                 block.penup()
                 block.goto(posx_block, posy_block)
             posx_block += 10
