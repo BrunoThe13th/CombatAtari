@@ -71,9 +71,10 @@ placar_2.write(placar2, False, "center", fonte)
 def player1_movement_right():
     player_1.right(30)
     global angulo_1
-    angulo_1 -= 30 
+    angulo_1 -= 30
     if angulo_1 == 360:
-        angulo_1 = 0 
+        angulo_1 = 0
+
 
 def player2_movement_right():
     player_2.right(30)
@@ -91,6 +92,7 @@ def player1_movement_left():
     if angulo_1 == 360:
         angulo_1 = 0
 
+
 def player2_movement_left():
     player_2.left(30)
     global angulo_2
@@ -99,62 +101,72 @@ def player2_movement_left():
         angulo_2 = 0
 
 # Movimentação dos jogadores para a frente
-def player1_movement_forward():   
-    pos1_xy = player_1.pos()  
+
+
+def player1_movement_forward():
+    pos1_xy = player_1.pos()
     pos2_xy = player_2.pos()
-    if ( (sqrt((pos1_xy[0]-pos2_xy[0])**2) + ((pos1_xy[1]-pos2_xy[1])**2)) > 40 ):
+    if ((sqrt((pos1_xy[0]-pos2_xy[0])**2) +
+         ((pos1_xy[1]-pos2_xy[1])**2)) > 40):
         player_1.forward(10)
 
+
 def player2_movement_forward():
-    pos1_xy = player_1.pos()  
+    pos1_xy = player_1.pos()
     pos2_xy = player_2.pos()
-    if ( (sqrt((pos2_xy[0]-pos1_xy[0])**2) + ((pos2_xy[1]-pos1_xy[1])**2) ) > 40):
-        player_2.forward(10)            
-             
+    if ((sqrt((pos2_xy[0]-pos1_xy[0])**2) +
+         ((pos2_xy[1]-pos1_xy[1])**2)) > 40):
+        player_2.forward(10)
+
+
 def tiro_p1():
     global placar1
-        
-    tiro1 = turtle.Turtle()  
+
+    tiro1 = turtle.Turtle()
     tiro1.up()
     tiro1.shape('circle')
     tiro1.turtlesize(0.5, 0.5)
-    tiro1.setpos(player_1.pos()) 
-    tiro1.left(angulo_1) 
+    tiro1.setpos(player_1.pos())
+    tiro1.left(angulo_1)
 
     # Posicao de Tiro1
     pos_tiro1_xy = player_1.pos()
     # Posicao do player 2
     pos_p2_xy = player_2.pos()
-    print('t1_pos',tiro1.pos())
-    print('xcor', round(tiro1.xcor(),0))
-    print('ycor', round(tiro1.ycor(),0))
-    print('distancia', (sqrt((pos_tiro1_xy[0]-pos_p2_xy[0])**2) + ((pos_tiro1_xy[1]-pos_p2_xy[1])**2) ))
+    print('t1_pos', tiro1.pos())
+    print('xcor', round(tiro1.xcor(), 0))
+    print('ycor', round(tiro1.ycor(), 0))
+    print('distancia', (sqrt(
+        (pos_tiro1_xy[0]-pos_p2_xy[0])**2) +
+        ((pos_tiro1_xy[1]-pos_p2_xy[1])**2)))
     print('angulo', angulo_1)
     print('-----')
 
-    while  ( ( round(tiro1.xcor(),0) in range (-350,350) ) and ( round(tiro1.ycor(),0) in range(-220,220) ) ) and ( (sqrt((pos_tiro1_xy[0]-pos_p2_xy[0])**2) + ((pos_tiro1_xy[1]-pos_p2_xy[1])**2) ) > 50):
+    while ((round(tiro1.xcor(), 0) in range(-350, 350)) and (round(tiro1.ycor(), 0) in range(-220, 220))) and ((sqrt((pos_tiro1_xy[0]-pos_p2_xy[0])**2) + ((pos_tiro1_xy[1]-pos_p2_xy[1])**2)) > 50):
         screen.update()
         screen.update()
         tiro1.forward(10)
-        time.sleep(tempo)        
-        
+        time.sleep(tempo)
+
         # Posicao de Tiro1
         pos_tiro1_xy = tiro1.pos()
         # Posicao do player 2
         pos_p2_xy = player_2.pos()
 
-    # Se tiro atingir P2  
-    if ( (sqrt((pos_tiro1_xy[0]-pos_p2_xy[0])**2) + ((pos_tiro1_xy[1]-pos_p2_xy[1])**2) ) <= 50):            
+    # Se tiro atingir P2
+    if ((sqrt((pos_tiro1_xy[0]-pos_p2_xy[0])**2) +
+         ((pos_tiro1_xy[1]-pos_p2_xy[1])**2)) <= 50):
         placar1 += 1
         placar_1.clear()
         placar_1.write(placar1, False, "center", fonte)
-            
-    #tiro1.ht()   
+
+    # tiro1.ht()
+
 
 def tiro_p2():
     global placar2
-        
-    tiro2 = turtle.Turtle()  
+
+    tiro2 = turtle.Turtle()
     tiro2.up()
     tiro2.shape('circle')
     tiro2.turtlesize(0.5, 0.5)
@@ -164,26 +176,28 @@ def tiro_p2():
     # Posicao de Tiro2
     pos_tiro2_xy = player_2.pos()
     # Posicao do player 1
-    pos_p1_xy = player_1.pos() 
+    pos_p1_xy = player_1.pos()
 
-    while ( ( round(tiro2.xcor(),0) in range (-350,350) ) and ( round(tiro2.ycor(),0) in range(-220,220) ) ) and  ( (sqrt((pos_tiro2_xy[0]-pos_p1_xy[0])**2) + ((pos_tiro2_xy[1]-pos_p1_xy[1])**2) ) > 50) :
+    while ((round(tiro2.xcor(), 0) in range(-350, 350)) and (round(tiro2.ycor(), 0) in range(-220, 220))) and ((sqrt((pos_tiro2_xy[0]-pos_p1_xy[0])**2) + ((pos_tiro2_xy[1]-pos_p1_xy[1])**2)) > 50):
         screen.update()
         screen.update()
-        tiro2.forward(10)        
+        tiro2.forward(10)
         time.sleep(tempo)
-        
+
         # Posicao de Tiro2
         pos_tiro2_xy = tiro2.pos()
         # Posicao do player 1
         pos_p1_xy = player_1.pos()
 
-    # Se tiro atingir P1  
-    if ( (sqrt((pos_tiro2_xy[0]-pos_p1_xy[0])**2) + ((pos_tiro2_xy[1]-pos_p1_xy[1])**2) ) <= 50):              
+    # Se tiro atingir P1
+    if ((sqrt((pos_tiro2_xy[0]-pos_p1_xy[0])**2) +
+         ((pos_tiro2_xy[1]-pos_p1_xy[1])**2)) <= 50):
         placar2 += 1
         placar_2.clear()
         placar_2.write(placar2, False, "center", fonte)
-            
-    #tiro2.ht()       
+
+    # tiro2.ht()
+
 
 screen.onkeypress(player1_movement_forward, 'w')
 screen.onkeypress(player1_movement_left, 'a')

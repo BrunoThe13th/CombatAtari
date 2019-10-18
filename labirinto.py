@@ -3,9 +3,10 @@ import random
 
 obstaculos = []
 
+
 # Funçao que gera as paredes
 def generate_walls(x, y):
-    file = open('C:/Users/diego.silva/OneDrive/Documentos/Diego/CombatAtari-master/labirinto.txt', 'r')
+    file = open('labirinto.txt', 'r')
     wall = file.readlines()
     posy_block = 200
     for lines in range(x):
@@ -21,7 +22,6 @@ def generate_walls(x, y):
                 block.goto(posx_block, posy_block)
                 var = str(posx_block) + '.' + str(posy_block)
                 obstaculos.append(var)
-                
             posx_block += 10
         posy_block -= 10
     file.close()
