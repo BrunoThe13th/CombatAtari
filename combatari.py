@@ -125,12 +125,18 @@ def tiro_p1():
     pos_tiro1_xy = player_1.pos()
     # Posicao do player 2
     pos_p2_xy = player_2.pos()
+    print('t1_pos',tiro1.pos())
+    print('xcor', round(tiro1.xcor(),0))
+    print('ycor', round(tiro1.ycor(),0))
+    print('distancia', (sqrt((pos_tiro1_xy[0]-pos_p2_xy[0])**2) + ((pos_tiro1_xy[1]-pos_p2_xy[1])**2) ))
+    print('angulo', angulo_1)
+    print('-----')
 
-    while  ( ( tiro1.xcor() in range (-350,350) ) and ( tiro1.ycor() in range(-220,220) ) ) and ( (sqrt((pos_tiro1_xy[0]-pos_p2_xy[0])**2) + ((pos_tiro1_xy[1]-pos_p2_xy[1])**2) ) > 50):
+    while  ( ( round(tiro1.xcor(),0) in range (-350,350) ) and ( round(tiro1.ycor(),0) in range(-220,220) ) ) and ( (sqrt((pos_tiro1_xy[0]-pos_p2_xy[0])**2) + ((pos_tiro1_xy[1]-pos_p2_xy[1])**2) ) > 50):
         screen.update()
         screen.update()
         tiro1.forward(10)
-        time.sleep(tempo)
+        time.sleep(tempo)        
         
         # Posicao de Tiro1
         pos_tiro1_xy = tiro1.pos()
@@ -153,15 +159,14 @@ def tiro_p2():
     tiro2.shape('circle')
     tiro2.turtlesize(0.5, 0.5)
     tiro2.setpos(player_2.pos())
-    tiro2.left(angulo_2) 
-    tiro2.sety(0)
+    tiro2.left(angulo_2)
 
     # Posicao de Tiro2
     pos_tiro2_xy = player_2.pos()
     # Posicao do player 1
     pos_p1_xy = player_1.pos() 
 
-    while ( ( round(tiro2.xcor(),2) in range (-350,350) ) and ( round(tiro2.ycor(),2) in range(-220,220) ) ) and  ( (sqrt((pos_tiro2_xy[0]-pos_p1_xy[0])**2) + ((pos_tiro2_xy[1]-pos_p1_xy[1])**2) ) > 50) :
+    while ( ( round(tiro2.xcor(),0) in range (-350,350) ) and ( round(tiro2.ycor(),0) in range(-220,220) ) ) and  ( (sqrt((pos_tiro2_xy[0]-pos_p1_xy[0])**2) + ((pos_tiro2_xy[1]-pos_p1_xy[1])**2) ) > 50) :
         screen.update()
         screen.update()
         tiro2.forward(10)        
