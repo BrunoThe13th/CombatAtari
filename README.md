@@ -3,7 +3,7 @@ The "Tank" game in Combat had the basis of two tanks controlled by players each 
 
 ## Contributors
 
-- Antônio Diego Furtado da Silva: 
+- Antônio Diego Furtado da Silva: https://github.com/D1380M4nfr3
 - Bruno França do Prado: https://github.com/BrunoThe13th
-- Lucas Monte Ciriaco: 
-- Natanael da Mota Figueira: 
+- Lucas Monte Ciriaco: https://github.com/lmc2631
+- Natanael da Mota Figueira: https://github.com/natanaelmota1
